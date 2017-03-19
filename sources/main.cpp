@@ -1,9 +1,7 @@
 #include <iostream>
 
-using namespace std;
+#define USAGE "./closest <density> \n\n -density: (0-100)"
 
-int main(int argc, char *argv[])
-{
-  cout << "Hello World!" << endl;
-  return 0;
+int main(int argc, char *argv[]) {
+
 }
