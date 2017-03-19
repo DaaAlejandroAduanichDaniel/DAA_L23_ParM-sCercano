@@ -2,14 +2,13 @@
 
 brute::brute() {}
 
-solution brute::operator() (plane& p) {
+solution brute::operator() (std::set<point*>& points) {
   std::pair <point*, point*> candidates;
   double min = std::numeric_limits<double>::max();
   double dist;
-  std::set<point*> space = p.getContent();
-  for (auto iti = space.begin(); iti != std::prev(space.end(), 1); iti++) {
-    for (auto itj = std::next(iti, 1) ; itj != space.end(); itj++) {
-      dist = p.distBetween(*iti, *itj);
+  for (auto iti = points.begin(); iti != std::prev(points.end(), 1); iti++) {
+    for (auto itj = std::next(iti, 1) ; itj != points.end(); itj++) {
+      dist = plane::distBetween(*iti, *itj);
       if (dist < min) {
         min = dist;
         candidates = {*iti, *itj};

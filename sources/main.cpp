@@ -14,9 +14,9 @@ int error () {
 int main(int argc, char *argv[]) {
   if (argc != N_ARGS + 1)
     return error();
-  unsigned d = std::stoi(argv[1]);
-  unsigned w = std::stoi(argv[2]);
-  unsigned h = std::stoi(argv[3]);
+  unsigned w = std::stoi(argv[1]);
+  unsigned h = std::stoi(argv[2]);
+  unsigned d = std::stoi(argv[3]);
   if (!plane::validDensity(d))
     return error();
   if (!plane::validHeight(h))
@@ -25,6 +25,6 @@ int main(int argc, char *argv[]) {
     return error();
   plane space (d, w, h);
   brute br;
-  solution s = br (space);
+  solution s = br (space.getContent());
   std::cout << s.distance << std::endl;
 }

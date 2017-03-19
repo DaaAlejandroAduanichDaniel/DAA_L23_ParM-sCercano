@@ -14,7 +14,7 @@ struct solution {
 class algorithm {
 public:
   algorithm();
-  virtual solution operator() (plane& p) = 0;
+  virtual solution operator() (std::set<point*>& points) = 0;
 };
 
 

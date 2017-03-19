@@ -22,7 +22,7 @@ public:
   static bool validWidth (unsigned width);
   static bool validHeight (unsigned height);
   inline std::set <point*>& getContent () { return content; }
-  double distBetween (point* A, point* B);
+  static double distBetween (point* A, point* B);
 };
 
 #endif // PLANE_H
