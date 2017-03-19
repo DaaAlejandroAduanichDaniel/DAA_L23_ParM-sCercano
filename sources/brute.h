@@ -1,9 +1,12 @@
 #ifndef BRUTE_H
 #define BRUTE_H
 
-class brute {
+#include "algorithm.h"
+
+class brute : public algorithm {
 public:
   brute();
+  solution operator() (plane& p);
 };
 
 #endif // BRUTE_H

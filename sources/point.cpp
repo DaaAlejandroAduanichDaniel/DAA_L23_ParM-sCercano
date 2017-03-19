@@ -1,6 +1,6 @@
 #include "point.h"
 
-point::point(unsigned X, unsigned Y) :
+point::point(double X, double Y) :
   y(Y),
   x(X)
   {}

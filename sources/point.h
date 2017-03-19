@@ -4,10 +4,12 @@
 
 class point {
 private:
-  unsigned x;
-  unsigned y;
+  double x;
+  double y;
 public:
-  point(unsigned X, unsigned Y);
+  point(double X, double Y);
+  inline double getX () { return x; }
+  inline double getY () { return y; }
 };
 
 #endif // POINT_H
