@@ -89,14 +89,21 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
 ## Complejidades
 
 ## Comprobación experimental
+Se ha realizado un estudio estadístico con los siguientes resultados sobre el desempeño de los algoritmos implementados.
 
 ### Representación gráfica
 
+#### Fuerza bruta frente a divide y vencerás
 ![](pics/1.png)
 
+#### Complejidad $n^2$ frente a $n*log_2{n}$
 ![](pics/2.png)
 
 ## Conclusiones
+- El desempeño para el algoritmo fuerza bruta se ajusta al esperado por su complejidad
+- EL desempeño para el algoritmo divide y vencerás difiere del esperado su complejidad. Esto se debe a la forma en que ha sido implementado, que requiere de múltiples copias de conjuntos para crear cada uno de los subplanos y que añaden otro multiplicador n. De esta forma, la nueva complejidad es de $2n*log_2{n}$, siendo esta su representación gráfica:
+
+![](pics/3.png)
 
 ## Apéndice
 El `makefile` es capaz de generar dos programas diferentes en función del argumento que se le indique
