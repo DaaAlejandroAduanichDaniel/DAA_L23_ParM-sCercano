@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     brute.cpp \
     divide.cpp \
     plane.cpp \
-    point.cpp
+    point.cpp \
+    Tests/tests.cpp
 
 HEADERS += \
     algorithm.h \
