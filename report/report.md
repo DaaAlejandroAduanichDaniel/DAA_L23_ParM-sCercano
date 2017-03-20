@@ -14,6 +14,14 @@ El problema del par más cercano consiste en, dado n puntos sobre un espacio euc
 se debe de encontrar los dos puntos destacados en color rojo.
 
 ## Técnicas empleadas
+Se han empleado dos aproximaciones diferentes para resolver este problema, a saber
+**fuerza bruta** y **divide y vencerás**.
+
+#### Fuerza Bruta
+Tal y como su nombre indica, se trata de uan forma de abordar el problema basada puramente en la potencia de cálculo, empleando algorítmos de presumible escasa calidad y órdenes de complejidad altos.
+
+### Divide y Vencerás
+Consiste en tratar de subdividr el problema en subproblemas de menor tamaño hasta llegar a un caso trivial, que puede ser resuelto directamente. Una vez conseguido esto, el proceso se invierte y se van combinando las soluciones a estos subproblemas hasta obtener la solución final.
 
 ## Explicación de los algoritmos
 
