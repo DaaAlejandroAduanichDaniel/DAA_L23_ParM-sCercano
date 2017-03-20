@@ -27,11 +27,8 @@ int main(int argc, char *argv[]) {
   plane space (d, w, h);
   brute br;
   divide dv;
-  solution sbrute = br (space.getContent());
-  auto left = space.getContentOrderedX();
-  auto right = space.getContentOrderedY();
-  solution sdivide = dv (left, right);
-
+  solution sbrute = br (space);
+  solution sdivide = dv (space);
   std::cout << sbrute.distance << std::endl;
   std::cout << sdivide.distance << std::endl;
 }

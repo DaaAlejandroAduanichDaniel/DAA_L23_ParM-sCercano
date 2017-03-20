@@ -2,7 +2,7 @@
 
 brute::brute() {}
 
-solution brute::operator() (std::vector<point*>& points) {
+solution brute::solver (std::vector<point*>& points) {
   std::pair <point*, point*> candidates;
   double min = std::numeric_limits<double>::max();
   double dist;
@@ -16,6 +16,10 @@ solution brute::operator() (std::vector<point*>& points) {
     }
   }
   return {*candidates.first, *candidates.second, min};
+}
+
+solution brute::operator() (plane& space) {
+  return solver (space.getContent());
 }
 
 

@@ -6,7 +6,8 @@
 class brute : public algorithm {
 public:
   brute();
-  solution operator() (std::vector<point*>& points);
+  solution solver (std::vector<point*>& points);
+  solution operator() (plane& space);
 };
 
 #endif // BRUTE_H

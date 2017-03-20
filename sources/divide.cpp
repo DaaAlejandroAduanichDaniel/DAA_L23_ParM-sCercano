@@ -2,7 +2,13 @@
 
 divide::divide() {}
 
-solution divide::operator() (std::vector<point*>& xPoints, std::vector<point*>& yPoints) {
+solution divide::operator() (plane& space) {
+  auto left = space.getContentOrderedX();
+  auto right = space.getContentOrderedY();
+  return solver (left, right);
+}
+
+solution divide::solver (std::vector<point*>& xPoints, std::vector<point*>& yPoints) {
   std::pair <point*, point*> candidates;
   solution pmin;
   solution closest;
@@ -10,7 +16,7 @@ solution divide::operator() (std::vector<point*>& xPoints, std::vector<point*>& 
   // solución trivial, usar fuerza bruta
   if (xPoints.size() <= 3) {
     brute br;
-    return br.operator ()(xPoints);
+    return br.solver (xPoints);
   } else {
     std::vector <point*> xL;
     std::vector <point*> xR;
@@ -35,8 +41,8 @@ solution divide::operator() (std::vector<point*>& xPoints, std::vector<point*>& 
     }
 
     // resolver recursivamente para los dos subcasos
-    solution p1 = operator ()(xL, yL);
-    solution p2 = operator ()(xR, yR);
+    solution p1 = solver (xL, yL);
+    solution p2 = solver (xR, yR);
 
     // Actualizar la distancia mínima con las soluciones obtenidas
     if (p1.distance < p2.distance)

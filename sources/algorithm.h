@@ -12,9 +12,11 @@ struct solution {
 };
 
 class algorithm {
+protected:
+
 public:
   algorithm();
-  solution operator() (std::vector<point*>& points);
+  virtual solution operator() (plane& points) = 0;
 };
 
 
