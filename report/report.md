@@ -35,14 +35,8 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
   3. Devolver $dmin$
 
 - #### Divide y Vencerás  
-  Tratar de dividir el plano verticalmente en dos subplanos recursivamente hasta llegar al caso base en el que un subplano solo contenga 3 o menos puntos. Este caso es resuelto mediante el algoritmo de fuerza bruta para obtener la distancia menos.  Tras retornar de la recursividad comparando las mejores soluciones, obtendremos dos
-  distancias, la mejor del subplano izquierdo y la del subplano derecho. Debemos encontrar ahora
-
-  1. Considerar dos vectores que contienen todos los puntos del problema ordenados de forma ascendente en función de su componente $V_{x}, V_{y}$. Estos serán la entrada del método recursivo
-  2. Dividir en dos partes recursivamente $V_{x}$ hasta llegar a un caso de tamaño 3
-  3.
-
-
+  Trata de dividir el plano "x" veces hasta que queden pares de nodos y compara su distancia buscando un mínimo. Esto a priori puede resultar algo simple pero se complica al tener en cuenta que a la hora de dividir el plano, pares de nodos pueden quedar separados en distintas secciones impidiendo comprobar la distancia entre estos puntos. La manera de resolver esto consiste en establecer una zona de análisis en torno al punto en el que se divide el plano y analizar los puntos comprendidos dentro. Esta zona tiene un tamaño equivalente a la distancia mínima entre nodos obtenida hasta el momento ([-distMin, distMin]). En caso de cumplirse que algún par de puntos tiene menor distancia que la mínima obtenida hasta el momento, se sustituye este valor con el obtenido y continúa el algoritmo hasta haber acabado con cada división hecha en durante la ejecución del mismo.
+  
 ## Pseudo código
 - #### Fuerza Bruta
 
@@ -52,9 +46,45 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
           if dist(P[i], P[j]) < minDist:
             minDist ← dist(P[i], P[j])
             closestPair ← (p, q)
+          endif
+        endfor
+      enfor
       return closestPair
 
 - #### Divide y Vencerás  
+
+      closestPair of (xP, yP)           
+        N ← length(xP)
+        if N ≤ 3 then
+          return closest points of xP using brute-force algorithm
+        else
+          xL ← points of xP from 1 to ⌈N/2⌉
+          xR ← points of xP from ⌈N/2⌉+1 to N
+          xm ← xP(⌈N/2⌉)x
+          yL ← { p ∈ yP : px ≤ xm }
+          yR ← { p ∈ yP : px > xm }
+          (dL, pairL) ← closestPair of (xL, yL)
+          (dR, pairR) ← closestPair of (xR, yR)          
+        if dL < dR then
+          (dmin, pairMin) ← (dL, pairL)
+        else
+          (dmin, pairMin) ← (dR, pairR)
+        endif
+        yS ← { p ∈ yP : |xm - px| < dmin }
+        nS ← number of points in yS
+        (closest, closestPair) ← (dmin, pairMin)
+        for i from 1 to nS - 1
+          k ← i + 1
+          while k ≤ nS and yS(k)y - yS(i)y < dmin
+            if |yS(k) - yS(i)| < closest then
+              (closest, closestPair) ← (|yS(k) - yS(i)|, {yS(k), yS(i)})
+            endif
+            k ← k + 1
+          endwhile
+        endfor
+        return closest, closestPair
+      endif
+
 
 ## Complejidad
 
@@ -73,3 +103,4 @@ El `makefile` es capaz de generar dos programas diferentes en función del argum
 ## Bibliografía
 - http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html
 - https://es.wikipedia.org/wiki/Problema_del_par_de_puntos_m%C3%A1s_cercanos
+- http://rosettacode.org/wiki/Closest-pair_problem#C.2B.2B
