@@ -27,11 +27,13 @@ solution divide::solver (std::vector<point*>& xPoints, std::vector<point*>& yPoi
     double xm = (*middleX)->getX();
 
     // dividir en dos subvectores en función de la x
+
     std::copy (xPoints.begin(), middleX , std::inserter(xL, xL.begin()));
     std::copy (middleX, xPoints.end(), std::inserter(xR, xR.begin()));
 
     // Copiar al subvector yL aquellos elementos de yPoints cuya x sea menor o igual a la del punto medio
-    // Copiar al subvector yR aquellos elementos de yPoints cuya x sea mayor a la del punto medio   
+    // Copiar al subvector yR aquellos elementos de yPoints cuya x sea mayor a la del punto medio       
+
     for (auto i = yPoints.begin(); i != yPoints.end(); i++) {
       if ((*i)->getX() <= xm)
         yL.push_back(*i);

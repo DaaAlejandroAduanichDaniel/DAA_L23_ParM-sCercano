@@ -89,21 +89,20 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
 ## Complejidades
 
 - #### Fuerza bruta
-Si analizamos el codigo del algoritmo del par más cercano que utiliza fuerza bruta en un plano 2D se puede observar que la complejidad de este es de $n^2$ ya que lo mas complejo que tiene son 2 for($n$) anidados.
+  Si analizamos el codigo del algoritmo del par más cercano que utiliza fuerza bruta en un plano 2D se puede observar que la complejidad de este es de $n^2$ ya que lo mas complejo que tiene son 2 for($n$) anidados.
 
 - #### Divide y vencerás
-Si analizamos el codigo del algoritmo del par más cercano que utiliza divide y venceras en un plano 2D se puede observar que la complejidad de este es de $nlog_2{n}$ ya que lo mas complejo que tiene es un for junto con un while que es condicionado por valores anteriores.
+  Si analizamos el codigo del algoritmo del par más cercano que utiliza divide y venceras en un plano 2D se puede observar que la complejidad de este es de $nlog_2{n}$ ya que lo mas complejo que tiene es un for junto con un while que es condicionado por valores anteriores.
 
-Usando el teorema maestro podemos observar su forma:
-$T(n) = T(n/2) + M(n)$ donde $M(n)$ es una variable lineal
+  Usando el teorema maestro podemos observar su forma:
+  $T(n) = T(n/2) + M(n)$ donde $M(n)$ es una variable lineal.  
 
-Por tanto los valores son:
-- $a = 2$
-- $b = 2$
-- $d = 1$
+  Por tanto los valores son:
+  - $a = 2$
+  - $b = 2$
+  - $d = 1$
 
-Si aplicamos el teorema maestro nos sale el caso 1, por tanto la complejidad es
-$n log_2{n}$
+  Si aplicamos el teorema maestro nos sale el caso 1, por tanto la complejidad es $n log_2{n}$
 
 ## Comprobación experimental
 Se ha realizado un estudio estadístico con los siguientes resultados sobre el desempeño de los algoritmos implementados.
@@ -118,7 +117,7 @@ Se ha realizado un estudio estadístico con los siguientes resultados sobre el d
 
 ## Conclusiones
 - El desempeño para el algoritmo fuerza bruta se ajusta al esperado por su complejidad
-- El desempeño para el algoritmo divide y vencerás difiere del esperado por su complejidad. Esto se debe a la forma en que ha sido implementado, que requiere de múltiples copias de conjuntos para crear cada uno de los subplanos y que añaden otro multiplicador n. De esta forma, la nueva complejidad es similar a $2n*log_2{n}$, siendo esta su representación gráfica:
+- El desempeño para el algoritmo divide y vencerás difiere del esperado por su complejidad. Esto se debe a la forma en que ha sido implementado, que requiere de múltiples copias de conjuntos para crear cada uno de los subplanos. Considerando estas como de complejidad $n$, la nueva complejidad es similar a $2n*log_2{n}$, siendo esta su representación gráfica:
 
 ![](pics/3.png)
 
