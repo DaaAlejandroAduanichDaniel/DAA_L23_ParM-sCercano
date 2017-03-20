@@ -2,7 +2,7 @@
 
 brute::brute() {}
 
-solution brute::operator() (std::set<point*>& points) {
+solution brute::operator() (std::vector<point*>& points) {
   std::pair <point*, point*> candidates;
   double min = std::numeric_limits<double>::max();
   double dist;

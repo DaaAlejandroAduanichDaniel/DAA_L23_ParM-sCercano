@@ -3,6 +3,7 @@
 
 #include "plane.h"
 #include "brute.h"
+#include "divide.h"
 
 #define USAGE "./closest <width> <height> <density> \n\n -width:   [1, inf)\n -height:  [1, inf)\n -density: [3, 100]"
 #define N_ARGS 3
@@ -25,6 +26,12 @@ int main(int argc, char *argv[]) {
     return error();
   plane space (d, w, h);
   brute br;
-  solution s = br (space.getContent());
-  std::cout << s.distance << std::endl;
+  divide dv;
+  solution sbrute = br (space.getContent());
+  auto left = space.getContentOrderedX();
+  auto right = space.getContentOrderedY();
+  solution sdivide = dv (left, right);
+
+  std::cout << sbrute.distance << std::endl;
+  std::cout << sdivide.distance << std::endl;
 }

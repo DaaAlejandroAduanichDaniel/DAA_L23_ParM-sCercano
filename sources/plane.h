@@ -1,10 +1,11 @@
 #ifndef PLANE_H
 #define PLANE_H
 
-#include <set>
+#include <vector>
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <algorithm>
 
 #include "point.h"
 
@@ -15,14 +16,16 @@
 
 class plane {
 private:
-  std::set <point*> content;
+  std::vector <point*> content;
 public:
   plane(unsigned density, unsigned width, unsigned height);
   static bool validDensity (unsigned density);
   static bool validWidth (unsigned width);
   static bool validHeight (unsigned height);
-  inline std::set <point*>& getContent () { return content; }
+  inline std::vector <point*>& getContent () { return content; }
   static double distBetween (point* A, point* B);
+  std::vector <point*> getContentOrderedX ();
+  std::vector <point*> getContentOrderedY ();
 };
 
 #endif // PLANE_H

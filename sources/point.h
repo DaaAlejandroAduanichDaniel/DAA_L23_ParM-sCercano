@@ -7,6 +7,7 @@ private:
   double x;
   double y;
 public:
+  point () {}
   point(double X, double Y);
   inline double getX () { return x; }
   inline double getY () { return y; }
