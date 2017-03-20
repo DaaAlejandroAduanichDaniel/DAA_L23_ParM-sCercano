@@ -27,13 +27,34 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
 
 ## Explicación de los algoritmos
 - #### Fuerza Bruta
+  Tratar de comparar _todas_ las distancias entre _todos_ los puntos del problema de la siguiente forma:
+
   1. Consideramos todos los puntos del problema como elementos contenidos en un conjunto $V$
   2. Considerar $dmin$ como la distancia máxima posible en el plano
   2. Para cada elemento $e \in V$, comparar su distancia $d$ con el resto de elementos de $V$. Si esta distancia es menor a $dmin$, $dmin = d$
   3. Devolver $dmin$
 
-- #### Divide y Vencerás
+- #### Divide y Vencerás  
+  Tratar de dividir el plano verticalmente en dos subplanos recursivamente hasta llegar al caso base en el que un subplano solo contenga 3 o menos puntos. Este caso es resuelto mediante el algoritmo de fuerza bruta para obtener la distancia menos.  Tras retornar de la recursividad comparando las mejores soluciones, obtendremos dos
+  distancias, la mejor del subplano izquierdo y la del subplano derecho. Debemos encontrar ahora
+
+  1. Considerar dos vectores que contienen todos los puntos del problema ordenados de forma ascendente en función de su componente $V_{x}, V_{y}$. Estos serán la entrada del método recursivo
+  2. Dividir en dos partes recursivamente $V_{x}$ hasta llegar a un caso de tamaño 3
+  3.
+
+
 ## Pseudo código
+- #### Fuerza Bruta
+
+      minDist ← infinity
+      for i = 1 to length(P) - 1
+        for j = i + 1 to length(P)          
+          if dist(P[i], P[j]) < minDist:
+            minDist ← dist(P[i], P[j])
+            closestPair ← (p, q)
+      return closestPair
+
+- #### Divide y Vencerás  
 
 ## Complejidad
 
@@ -48,3 +69,7 @@ El `makefile` es capaz de generar dos programas diferentes en función del argum
 
 - `make all` : genera un programa que calcula el par más cercano con ambos algoritmos una sola vez
 - `make tests` : genera un programa para la realización de tests sobre ambos algoritmos
+
+## Bibliografía
+- http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html
+- https://es.wikipedia.org/wiki/Problema_del_par_de_puntos_m%C3%A1s_cercanos
