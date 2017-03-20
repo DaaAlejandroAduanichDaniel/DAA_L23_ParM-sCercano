@@ -5,9 +5,8 @@
 #include "brute.h"
 
 class divide : public algorithm {
-private:
-  solution solver (std::vector<point*>& xPoints, std::vector<point*>& yPoints);
 public:
+  solution solver (std::vector<point*>& xPoints, std::vector<point*>& yPoints);
   divide();
   solution operator() (plane& space);
 };

@@ -12,11 +12,10 @@ solution divide::solver (std::vector<point*>& xPoints, std::vector<point*>& yPoi
   std::pair <point*, point*> candidates;
   solution pmin;
   solution closest;
-
+  brute br;
   // solución trivial, usar fuerza bruta
   if (xPoints.size() <= 3) {
-    brute br;
-    return br.solver (xPoints);
+    return br.solver (xPoints);    
   } else {
     std::vector <point*> xL;
     std::vector <point*> xR;
@@ -32,7 +31,7 @@ solution divide::solver (std::vector<point*>& xPoints, std::vector<point*>& yPoi
     std::copy (middleX, xPoints.end(), std::inserter(xR, xR.begin()));
 
     // Copiar al subvector yL aquellos elementos de yPoints cuya x sea menor o igual a la del punto medio
-    // Copiar al subvector yR aquellos elementos de yPoints cuya x sea mayor a la del punto medio
+    // Copiar al subvector yR aquellos elementos de yPoints cuya x sea mayor a la del punto medio   
     for (auto i = yPoints.begin(); i != yPoints.end(); i++) {
       if ((*i)->getX() <= xm)
         yL.push_back(*i);
@@ -59,9 +58,9 @@ solution divide::solver (std::vector<point*>& xPoints, std::vector<point*>& yPoi
     unsigned nS = yPoints.size();
     closest = pmin;
 
-    // Combinar las soluciones
+    // Combinar las soluciones    
 
-    for (auto i = yS.begin(); i != yS.end(); i++) {
+    for (auto i = yS.begin(); i != std::prev(yS.end(), 1); ++i) {
       auto k = std::next(i, 1);
       while (k != yS.end() && (*k)->getY() - (*i)->getY() < pmin.distance) {
         double newDistance = plane::distBetween(*i, *k);

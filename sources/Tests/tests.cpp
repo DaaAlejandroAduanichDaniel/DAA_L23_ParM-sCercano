@@ -40,8 +40,10 @@ void testBattery (unsigned w, unsigned h, unsigned d, unsigned size) {
     auto end = std::chrono::high_resolution_clock::now();
     timeBrute[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
     // Divide
+    auto left = space.getContentOrderedX();
+    auto right = space.getContentOrderedY();
     begin = std::chrono::high_resolution_clock::now();
-    divideSolver (space);
+    divideSolver.solver(left, right);
     end = std::chrono::high_resolution_clock::now();
     timeDivide[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
   }
