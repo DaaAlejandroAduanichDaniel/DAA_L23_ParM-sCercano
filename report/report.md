@@ -36,7 +36,7 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
 
 - #### Divide y Vencerás  
   Trata de dividir el plano "x" veces hasta que queden pares de nodos y compara su distancia buscando un mínimo. Esto a priori puede resultar algo simple pero se complica al tener en cuenta que a la hora de dividir el plano, pares de nodos pueden quedar separados en distintas secciones impidiendo comprobar la distancia entre estos puntos. La manera de resolver esto consiste en establecer una zona de análisis en torno al punto en el que se divide el plano y analizar los puntos comprendidos dentro. Esta zona tiene un tamaño equivalente a la distancia mínima entre nodos obtenida hasta el momento ([-distMin, distMin]). En caso de cumplirse que algún par de puntos tiene menor distancia que la mínima obtenida hasta el momento, se sustituye este valor con el obtenido y continúa el algoritmo hasta haber acabado con cada división hecha en durante la ejecución del mismo.
-  
+
 ## Pseudo código
 - #### Fuerza Bruta
 
@@ -65,32 +65,36 @@ Se han empleado dos aproximaciones diferentes para resolver este problema, a sab
           yR ← { p ∈ yP : px > xm }
           (dL, pairL) ← closestPair of (xL, yL)
           (dR, pairR) ← closestPair of (xR, yR)          
-        if dL < dR then
-          (dmin, pairMin) ← (dL, pairL)
-        else
-          (dmin, pairMin) ← (dR, pairR)
+          if dL < dR then
+            (dmin, pairMin) ← (dL, pairL)
+          else
+            (dmin, pairMin) ← (dR, pairR)
+          endif
+          yS ← { p ∈ yP : |xm - px| < dmin }
+          nS ← number of points in yS
+          (closest, closestPair) ← (dmin, pairMin)
+          for i from 1 to nS - 1
+            k ← i + 1
+            while k ≤ nS and yS(k)y - yS(i)y < dmin
+              if |yS(k) - yS(i)| < closest then
+                (closest, closestPair) ← (|yS(k) - yS(i)|, {yS(k), yS(i)})
+              endif
+              k ← k + 1
+            endwhile
+          endfor
+          return closest, closestPair
         endif
-        yS ← { p ∈ yP : |xm - px| < dmin }
-        nS ← number of points in yS
-        (closest, closestPair) ← (dmin, pairMin)
-        for i from 1 to nS - 1
-          k ← i + 1
-          while k ≤ nS and yS(k)y - yS(i)y < dmin
-            if |yS(k) - yS(i)| < closest then
-              (closest, closestPair) ← (|yS(k) - yS(i)|, {yS(k), yS(i)})
-            endif
-            k ← k + 1
-          endwhile
-        endfor
-        return closest, closestPair
-      endif
 
 
-## Complejidad
+## Complejidades
 
 ## Comprobación experimental
 
 ### Representación gráfica
+
+![](pics/1.png)
+
+![](pics/2.png)
 
 ## Conclusiones
 
