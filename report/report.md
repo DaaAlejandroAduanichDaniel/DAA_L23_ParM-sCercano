@@ -7,6 +7,11 @@
 20/3/2017  
 
 ## Problema a resolver
+El problema del par más cercano consiste en, dado n puntos sobre un espacio euclídeo, encontrar aquellos dos cuya distancia entre sí sea menor que cualquiera de las otras distancias entre cualesquiera puntos. Para nuestro caso, hemos trabajado con el caso bidimensional al tratarse del más intuitivo de resolver. De esta forma, considerando la siguiente nube de puntos:
+
+![](pics/ejemplo.png)
+
+se debe de encontrar los dos puntos destacados en color rojo.
 
 ## Técnicas empleadas
 
