@@ -1,14 +1,16 @@
 #include "brute.h"
 
+#include <iostream>
+
 brute::brute() {}
 
-solution brute::solver (std::vector<point*>& points) {
-  std::pair <point*, point*> candidates = {nullptr, nullptr};
+solution brute::solver (std::vector<point*>& xPoints, std::vector<point*>::iterator begin, std::vector<point*>::iterator end) {
+  std::pair <point*, point*> candidates;
   double min = std::numeric_limits<double>::max();
   double dist;  
-  if (points.size() >= 2) {
-    for (auto iti = points.begin(); iti != std::prev(points.end(), 1); iti++) {
-      for (auto itj = std::next(iti, 1) ; itj != points.end(); itj++) {
+  if (std::distance(begin, end) >= 2) {
+    for (auto iti = begin; iti != std::prev(end, 1); iti++) {
+      for (auto itj = std::next(iti, 1) ; itj != end; itj++) {
         dist = plane::distBetween(*iti, *itj);
         if (dist < min) {
           min = dist;
@@ -16,12 +18,14 @@ solution brute::solver (std::vector<point*>& points) {
         }
       }
     }
+    return {*candidates.first, *candidates.second, min};
+  } else {
+    return {point(), point(), min};
   }
-  return {*candidates.first, *candidates.second, min};
 }
 
 solution brute::operator() (plane& space) {
-  return solver (space.getContent());
+  return solver (space.getContent(), space.getContent().begin(), space.getContent().end());
 }
 
 

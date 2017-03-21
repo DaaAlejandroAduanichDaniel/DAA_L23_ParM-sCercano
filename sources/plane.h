@@ -10,7 +10,7 @@
 #include "point.h"
 
 #define MIN_DENSITY 2
-#define MAX_DENSITY 101
+#define MAX_DENSITY 1001
 #define MIN_WIDTH 1
 #define MIN_HEIGHT 1
 

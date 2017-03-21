@@ -38,15 +38,15 @@ void testBattery (unsigned w, unsigned h, unsigned d, unsigned size) {
     plane space (d * i + 1, w, h);
     // Brute
     auto begin = std::chrono::high_resolution_clock::now();
-    a = bruteSolver (space);
+    a = bruteSolver.solver (space.getContent(), space.getContent().begin(), space.getContent().end());
     auto end = std::chrono::high_resolution_clock::now();
     timeBrute[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
     // Divide
     auto left = space.getContentOrderedX();    
     begin = std::chrono::high_resolution_clock::now();
-    b = divideSolver.solver(left);
+    b = divideSolver.solver(left, left.begin(), left.end());
     end = std::chrono::high_resolution_clock::now();
-    timeDivide[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
+    timeDivide[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();    
     if (a.distance != b.distance) {
       std::cout << "No se está calculando bien (" << i <<") : " << a.distance << " " << b.distance << std::endl;
       return;
