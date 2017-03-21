@@ -6,7 +6,7 @@
 
 class divide : public algorithm {
 public:
-  solution solver (std::vector<point*>& xPoints, std::vector<point*>& yPoints);
+  solution solver (std::vector<point*>& xPoints);
   divide();
   solution operator() (plane& space);
 };

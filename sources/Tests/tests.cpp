@@ -32,20 +32,26 @@ void testBattery (unsigned w, unsigned h, unsigned d, unsigned size) {
   std::vector<double> timeDivide(size);
   brute bruteSolver;
   divide divideSolver;
+  solution a;
+  solution b;
   for (unsigned i = 0; i < size; i++) {
     plane space (d * i + 1, w, h);
     // Brute
     auto begin = std::chrono::high_resolution_clock::now();
-    bruteSolver (space);
+    a = bruteSolver (space);
     auto end = std::chrono::high_resolution_clock::now();
-    timeBrute[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+    timeBrute[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
     // Divide
-    auto left = space.getContentOrderedX();
-    auto right = space.getContentOrderedY();
+    auto left = space.getContentOrderedX();    
     begin = std::chrono::high_resolution_clock::now();
-    divideSolver.solver(left, right);
+    b = divideSolver.solver(left);
     end = std::chrono::high_resolution_clock::now();
-    timeDivide[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+    timeDivide[i] = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
+    if (a.distance != b.distance) {
+      std::cout << "No se está calculando bien (" << i <<") : " << a.distance << " " << b.distance << std::endl;
+      return;
+    }
+
   }
   writeLog(timeBrute, timeDivide);
 }

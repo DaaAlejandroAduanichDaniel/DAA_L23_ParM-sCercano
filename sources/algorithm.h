@@ -8,7 +8,7 @@
 struct solution {
   point A;
   point B;
-  double distance;
+  double distance;  
 };
 
 class algorithm {
