@@ -3,8 +3,7 @@
 divide::divide() {}
 
 solution divide::operator() (plane& space) {
-  auto left = space.getContentOrderedX();
-  //auto right = space.getContentOrderedY();
+  auto left = space.getContentOrderedX();  
   return solver (left, left.begin(), left.end());
 }
 
